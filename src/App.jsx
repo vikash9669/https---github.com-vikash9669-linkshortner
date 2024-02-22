@@ -40,21 +40,29 @@ function App() {
 
   return (
     <>
-      <div className="App p-4">
+      <div className="App py-2">
         <h2>A Simple Bitly Link Shortener</h2>
         <div>
-          <form method="post" action="" onSubmit={handleSubmit}>
-            <input
-              name="long_url"
-              type="text"
-              value={originalUrl}
-              placeholder="Paste your url"
-              onChange={(e) => setOriginalUrl(e.target.value)}
-            />
-            <button type="submit">
-              <img src={send} alt="send icon" id="send_icon" />
-            </button>
-          </form>
+          {!shortenedUrl ? (
+            <form method="post" action="" onSubmit={handleSubmit}>
+              <input
+                name="long_url"
+                type="text"
+                value={originalUrl}
+                placeholder="Paste your url"
+                onChange={(e) => setOriginalUrl(e.target.value)}
+              />
+              {originalUrl ? (
+                <button type="submit">
+                  <img src={send} alt="send icon" id="send_icon" />
+                </button>
+              ) : (
+                ""
+              )}
+            </form>
+          ) : (
+            ""
+          )}
         </div>
 
         {/* show on success... */}
